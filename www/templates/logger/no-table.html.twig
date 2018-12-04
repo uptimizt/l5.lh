@@ -1,0 +1,23 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<div class="align-items-center justify-content-center">
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+          <a href="{{ app.request.getSchemeAndHttpHost() }}"><h1>Logger</h1></a>
+          <p>Таблица логов</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="shadow p-3 mb-5 bg-white rounded">
+        <span>Таблица отсутствует в БД. Попробуйте сделать генерацию <code>php bin/console app:create-log</code> или импортировать файл с данными.</span>
+      </div>
+    </div>
+
+</div>
+
+{% endblock %}

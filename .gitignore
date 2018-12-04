@@ -1,0 +1,7 @@
+.vagrant
+logs/*.log
+www/phpmyadmin
+www/wp-content/uploads/*
+ubuntu-xenial-16.04-cloudimg-console.log
+.DS_Store
+.idea

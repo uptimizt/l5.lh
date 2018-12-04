@@ -1,0 +1,89 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<div class="align-items-center justify-content-center">
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+          <a href="{{ app.request.getSchemeAndHttpHost() }}"><h1>Logger</h1></a>
+          <p>Таблица логов</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="{{ log.urls.page_back }}">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="{{ log.urls.page_next }}">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="col-md-6 ">
+          <ul class="nav nav-pills float-md-right float-xs-left">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <span>Сортировка</span>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ log.urls.sortDate.desc }}">Дата: по убыванию</a>
+                <a class="dropdown-item" href="{{ log.urls.sortDate.asc }}">Дата: по возростанию</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <span>Выбор типа</span>
+                {% if not log.type == false %}
+                  <span> ({{log.type}})</span>
+                {% endif %}
+              </a>
+              <div class="dropdown-menu">
+                {% for select_type in log.urls.types %}
+                  <a class="dropdown-item" href="{{ select_type.url }}">{{ select_type.name }}</a>
+                {% endfor %}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {% if log.rows %}
+
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">дата</th>
+                    <th scope="col">тип</th>
+                    <th scope="col">сообщение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in log.rows %}
+                  <tr>
+                    <th scope="row">{{ row.id|e }}</th>
+                    <td>{{ row.ts|e }}</td>
+                    <td>{{ row.type|e }}</td>
+                    <td>{{ row.message|e }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+      {% else %}
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <span>Нет данны в таблице. Попробуйте сделать генерацию <code>php bin/console app:create-log</code></span>
+        </div>
+      {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
