@@ -1,6 +1,6 @@
 # Вводная
 
-Ссылка для запуска приложения http://l5.lh/
+Ссылка для запуска приложения http://p5.lh/
 
 # Исходные Требования
 
@@ -18,8 +18,8 @@
 ### Клонируем репо
 и запускаем вагрант (нужно чтобы были выполнены Исходные Требования)
 ```
-git clone git@github.com:uptimizt/l5.lh.git logger
-cd logger
+git clone git@github.com:uptimizt/p5.lh.git p5
+cd p5
 vagrant up
 ```
 All Vagrant commands like `vagrant halt`, `vagrant destroy` and `vagrant suspend` are applicable.
@@ -36,10 +36,9 @@ composer install
 
 ### Открываем консоль сайта
 
-Ссылка на главную http://l5.lh/
-Доступ к БД http://db.l5.lh/
+Ссылка на главную http://p5.lh/
+Доступ к БД http://db.p5.lh/
 
-вопросы: uptimizt@gmail.com
 
 
 ### поставить демо данные
